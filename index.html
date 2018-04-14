@@ -1,53 +1,53 @@
 <canvas id="myCanvas" width="500" height="500"></canvas>
 <script>
-  function drawLoopSquare() {
-    /* Canvas要素の定義など */
-    var cs  = document.getElementById('myCanvas');
-    cs.width = window.innerWidth;
-    cs.height = window.innerHeight;
-    var ctx = cs.getContext('2d');
-    var w = cs.width;
-    var h = cs.height;
-    var x = Math.random() * 1000;
-    var y = Math.random() * 1000;
-    var x_reverse = false;
-    var y_reverse = false;
+    function drawLoopSquare() {
+        /* Canvas要素の定義など */
+        var cs = document.getElementById('myCanvas');
+        cs.width = window.innerWidth;
+        cs.height = window.innerHeight;
+        var ctx = cs.getContext('2d');
+        var w = cs.width;
+        var h = cs.height;
+        var x = Math.random() * 1000;
+        var y = Math.random() * 1000;
+        var x_reverse = false;
+        var y_reverse = false;
 
-    /* 描画フロー */
-    (function render() {
-        // clear canvas
-        ctx.clearRect(0, 0, w, h);
+        /* 描画フロー */
+        (function render() {
+            // clear canvas
+            ctx.clearRect(0, 0, w, h);
 
-        /* ** render to canvas ** */
-        ctx.beginPath();
-        ctx.arc(x, y, 30, 0, Math.PI*2, false);
-        ctx.fillStyle = 'black';
-        ctx.fill();
-        ctx.stroke();
-        /* ** render to canvas ** */
+            /* ** render to canvas ** */
+            ctx.beginPath();
+            ctx.arc(x, y, 30, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'black';
+            ctx.fill();
+            ctx.stroke();
+            /* ** render to canvas ** */
 
-        if (x + 30 > cs.width) {
-          x_reverse = true;
-        } else if (x - 30 <= 0 ) {
-          x_reverse = false;
-        }
-        if (x_reverse) {
-            x -= (Math.floor(Math.random() * 10) + 1) / 3;
-        } else {
-            x += (Math.floor(Math.random() * 10) + 1) / 3;
-        }
-        if (y + 30 > cs.height) {
-          y_reverse = true;
-        } else if (y - 30 <= 0 ) {
-          y_reverse = false;
-        }
-        if (y_reverse) {
-            y -= (Math.floor(Math.random() * 10) + 1) / 3;
-        } else {
-            y += (Math.floor(Math.random() * 10) + 1) / 3;
-        }
-        requestAnimationFrame(render);
-    })();
-}
-drawLoopSquare();
+            if (x + 30 > cs.width) {
+                x_reverse = true;
+            } else if (x - 30 <= 0) {
+                x_reverse = false;
+            }
+            if (x_reverse) {
+                x -= (Math.floor(Math.random() * 10) + 1) / 3;
+            } else {
+                x += (Math.floor(Math.random() * 10) + 1) / 3;
+            }
+            if (y + 30 > cs.height) {
+                y_reverse = true;
+            } else if (y - 30 <= 0) {
+                y_reverse = false;
+            }
+            if (y_reverse) {
+                y -= (Math.floor(Math.random() * 10) + 1) / 3;
+            } else {
+                y += (Math.floor(Math.random() * 10) + 1) / 3;
+            }
+            requestAnimationFrame(render);
+        })();
+    }
+    drawLoopSquare();
 </script>
