@@ -15,19 +15,17 @@
 
     /* 描画フロー */
     (function render() {
-        // Canvas全体をクリア
+        // clear canvas
         ctx.clearRect(0, 0, w, h);
 
-        // 要素を描画する
+        /* ** render to canvas ** */
         ctx.beginPath();
         ctx.arc(x, y, 30, 0, Math.PI*2, false);
         ctx.fillStyle = 'black';
         ctx.fill();
         ctx.stroke();
+        /* ** render to canvas ** */
 
-        // 要素を動かす
-        // 四角形のx座標がCanvasの横幅を超えたら初期位置(x座標を0)へ
-        // そうでなければ、x座標を1増やす
         if (x + 30 > cs.width) {
           x_reverse = true;
         } else if (x - 30 <= 0 ) {
@@ -48,18 +46,8 @@
         } else {
             y += (Math.floor(Math.random() * 10) + 1) / 3;
         }
-
-        // このrender関数を繰り返す
-        // 下記どちらかを使った場合は、外側でrender()を実行する※1（もしくは即時実行）
-        // setTimeout(render, 100);
         requestAnimationFrame(render);
     })();
-    /* ※1 */
-    // render();
-
-    /* render()関数を繰り返す */
-    /* setTimeout、requestAnimationFrameではなく、setIntervalを使う場合 */
-    // requestAnimationFrame(render);
 }
 drawLoopSquare();
 </script>
